@@ -1,0 +1,20 @@
+{
+	"compilerOptions": {
+		"target": "es2020",
+		"module": "commonjs",
+		"outDir": "./dist",
+		"strict": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"allowImportingTsExtensions": true,
+		"noEmit": true,
+		"baseUrl": "./",
+		"paths": {
+			"lib/*": ["src/lib/*"]
+		},
+		"typeRoots": ["./types"]
+	},
+	"include": ["src/**/*.ts", "types/express/custom.d.ts"],
+	"exclude": ["node_modules"]
+}
