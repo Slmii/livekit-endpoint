@@ -30,6 +30,18 @@ roomRoutes.get(
 	}
 );
 
+roomRoutes.get('', async (req: Request<any, any, any>, res: Response, _next: NextFunction) => {
+	const roomService = req.roomService;
+
+	try {
+		const rooms = await roomService.listRooms();
+		res.send(rooms);
+	} catch (err) {
+		const { error, status } = getError(err);
+		res.status(status).send({ msg: 'Failed to list rooms', error });
+	}
+});
+
 roomRoutes.post('/', async (req: Request<any, any, RoomName>, res: Response, _next: NextFunction) => {
 	const roomService = req.roomService;
 
