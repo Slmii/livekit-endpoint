@@ -30,7 +30,7 @@ roomRoutes.get(
 	}
 );
 
-roomRoutes.get('', async (req: Request<any, any, any>, res: Response, _next: NextFunction) => {
+roomRoutes.get('/', async (req: Request<any, any, any>, res: Response, _next: NextFunction) => {
 	const roomService = req.roomService;
 
 	try {
