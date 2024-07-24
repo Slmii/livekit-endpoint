@@ -7,14 +7,13 @@
 		"esModuleInterop": true,
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,
-		"allowImportingTsExtensions": true,
-		"noEmit": true,
+		"noEmit": false,
 		"baseUrl": "src",
 		"paths": {
 			"lib/*": ["./lib/*"]
 		},
 		"typeRoots": ["./types"]
 	},
-	"include": ["src"],
-	"exclude": ["node_modules"]
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "dist"]
 }
