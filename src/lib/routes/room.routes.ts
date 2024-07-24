@@ -30,6 +30,22 @@ roomRoutes.get(
 	}
 );
 
+roomRoutes.post('/', async (req: Request<any, any, RoomName>, res: Response, _next: NextFunction) => {
+	const roomService = req.roomService;
+
+	try {
+		const room = await roomService.createRoom({
+			name: req.body.roomName,
+			emptyTimeout: 5
+		});
+
+		res.send({ room });
+	} catch (err) {
+		const { error, status } = getError(err);
+		res.status(status).send({ msg: 'Failed to create room', error });
+	}
+});
+
 roomRoutes.delete('/', async (req: Request<any, any, RoomName>, res: Response, _next: NextFunction) => {
 	const roomService = req.roomService;
 
