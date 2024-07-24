@@ -19,7 +19,7 @@ webhookRoutes.post('/', async (req: Request<any, any, any>, res: Response, _next
 			}
 		}
 
-		const event = req.body.toString();
+		const event = req.body;
 		console.log('Received event', event);
 	} catch (error) {
 		console.log('Error receiving webhook', error);
