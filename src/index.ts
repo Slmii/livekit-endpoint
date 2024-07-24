@@ -5,14 +5,14 @@ import { tokenRoutes, roomRoutes, webhookRoutes } from 'src/lib/routes';
 import { RoomServiceClient, WebhookReceiver } from 'livekit-server-sdk';
 
 dotenv.config();
+const app: Express = express();
 
 const API_KEY = process.env.LIVEKIT_API_KEY as string;
 const API_SECRET = process.env.LIVEKIT_API_SECRET as string;
 
 const receiver = new WebhookReceiver(API_KEY, API_SECRET);
 const roomService = new RoomServiceClient(process.env.LIVEKIT_HOST as string, API_KEY, API_SECRET);
-const app: Express = express();
-const port = process.env.PORT || 3000;
+// const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use('/webhook', express.raw({ type: 'application/webhook+json' }));
@@ -29,6 +29,12 @@ app.use('/token', tokenRoutes);
 app.use('/rooms', roomRoutes);
 app.use('/webhook', webhookRoutes);
 
-app.listen(port, () => {
-	console.log(`[server]: Server is running at http://localhost:${port}`);
+app.use('/test', (_req, res) => {
+	res.status(200).json({ message: 'Success' });
 });
+
+// app.listen(port, () => {
+// 	console.log(`[server]: Server is running at http://localhost:${port}`);
+// });
+
+export default app;
