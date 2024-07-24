@@ -5,19 +5,19 @@ const webhookRoutes = express.Router();
 
 webhookRoutes.post('/', async (req: Request<any, any, any>, res: Response, _next: NextFunction) => {
 	try {
-		const authToken = req.get('Authorization');
-		if (!authToken) {
-			return res.status(401).send({ msg: 'Unauthorized' });
-		}
+		// const authToken = req.get('Authorization');
+		// if (!authToken) {
+		// 	return res.status(401).send({ msg: 'Unauthorized' });
+		// }
 
-		const payload = jwtDecode(authToken);
+		// const payload = jwtDecode(authToken);
 
-		if (payload.exp) {
-			const expiry = new Date(payload.exp * 1000);
-			if (expiry < new Date()) {
-				return res.status(401).send({ msg: 'Unauthorized' });
-			}
-		}
+		// if (payload.exp) {
+		// 	const expiry = new Date(payload.exp * 1000);
+		// 	if (expiry < new Date()) {
+		// 		return res.status(401).send({ msg: 'Unauthorized' });
+		// 	}
+		// }
 
 		const event = req.body;
 		console.log('Received event', event);
