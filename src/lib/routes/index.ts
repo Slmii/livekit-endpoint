@@ -1,3 +1,3 @@
-export * from './token.routes.ts';
-export * from './room.routes.ts';
-export * from './webhook.routes.ts';
+export * from './token.routes';
+export * from './room.routes';
+export * from './webhook.routes';
