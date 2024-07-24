@@ -12,7 +12,7 @@ const API_SECRET = process.env.LIVEKIT_API_SECRET as string;
 
 const receiver = new WebhookReceiver(API_KEY, API_SECRET);
 const roomService = new RoomServiceClient(process.env.LIVEKIT_HOST as string, API_KEY, API_SECRET);
-// const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use('/webhook', express.raw({ type: 'application/webhook+json' }));
@@ -33,8 +33,8 @@ app.use('/test', (_req, res) => {
 	res.status(200).json({ message: 'Success' });
 });
 
-// app.listen(port, () => {
-// 	console.log(`[server]: Server is running at http://localhost:${port}`);
-// });
+app.listen(port, () => {
+	console.log(`[server]: Server is running at http://localhost:${port}`);
+});
 
 export default app;
