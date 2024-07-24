@@ -1,14 +1,9 @@
-import express, { NextFunction, Request, Response } from 'express';
+import express from 'express';
 import { AccessToken } from 'livekit-server-sdk';
 
 const tokenRoutes = express.Router();
 
-interface Token {
-	roomName: string;
-	participantName: string;
-}
-
-tokenRoutes.get('/:roomName/:participantName', (req: Request<Token, any, any>, res: Response, _next: NextFunction) => {
+tokenRoutes.get('/:roomName/:participantName', async (req, res, _next) => {
 	const accessToken = new AccessToken(process.env.LIVEKIT_API_KEY, process.env.LIVEKIT_API_SECRET, {
 		identity: req.params.participantName,
 		name: req.params.participantName,
@@ -24,7 +19,7 @@ tokenRoutes.get('/:roomName/:participantName', (req: Request<Token, any, any>, r
 		canPublishData: true
 	});
 
-	const token = accessToken.toJwt();
+	const token = await accessToken.toJwt();
 	res.send({ token });
 });
 

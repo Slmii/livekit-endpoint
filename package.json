@@ -3,13 +3,10 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "dist/index.js",
+	"type": "module",
 	"scripts": {
-		"dev": "nodemon -e ts,js --exec ts-node -r tsconfig-paths/register ./src/index.ts",
-		"build": "rm -rf dist && tsc && tsc-alias",
-		"start": "node dist/index.js",
-		"format": "prettier --write \"src/**/*.{json,js,jsx,ts,tsx,css,scss}\" --ignore-path .prettierignore",
-		"lint": "eslint ./src --max-warnings=0",
-		"vercel-build": "echo hello"
+		"dev": "nodemon src/index.js",
+		"start": "node dist/index.js"
 	},
 	"keywords": [],
 	"author": "",
@@ -18,7 +15,7 @@
 		"cors": "^2.8.5",
 		"dotenv": "^16.4.5",
 		"express": "^4.19.2",
-		"livekit-server-sdk": "^1.2.7"
+		"livekit-server-sdk": "^2.6.0"
 	},
 	"devDependencies": {
 		"@types/cors": "^2.8.17",

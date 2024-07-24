@@ -1,17 +1,19 @@
-import express, { Express } from 'express';
+import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import { RoomServiceClient, WebhookReceiver } from 'livekit-server-sdk';
-import { roomRoutes, tokenRoutes, webhookRoutes } from 'lib/routes';
+import { tokenRoutes } from './lib/routes/token.routes.js';
+import { roomRoutes } from './lib/routes/room.routes.js';
+import { webhookRoutes } from './lib/routes/webhook.routes.js';
 
 dotenv.config();
-const app: Express = express();
+const app = express();
 
-const API_KEY = process.env.LIVEKIT_API_KEY as string;
-const API_SECRET = process.env.LIVEKIT_API_SECRET as string;
+const API_KEY = process.env.LIVEKIT_API_KEY;
+const API_SECRET = process.env.LIVEKIT_API_SECRET;
 
 const receiver = new WebhookReceiver(API_KEY, API_SECRET);
-const roomService = new RoomServiceClient(process.env.LIVEKIT_HOST as string, API_KEY, API_SECRET);
+const roomService = new RoomServiceClient(process.env.LIVEKIT_HOST, API_KEY, API_SECRET);
 const port = process.env.PORT || 3000;
 
 app.use(cors());
