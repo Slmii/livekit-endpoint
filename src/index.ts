@@ -1,8 +1,8 @@
 import express, { Express } from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import { tokenRoutes, roomRoutes, webhookRoutes } from 'src/lib/routes';
 import { RoomServiceClient, WebhookReceiver } from 'livekit-server-sdk';
+import { roomRoutes, tokenRoutes, webhookRoutes } from 'lib/routes';
 
 dotenv.config();
 const app: Express = express();

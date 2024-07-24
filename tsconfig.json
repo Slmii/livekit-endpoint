@@ -2,19 +2,19 @@
 	"compilerOptions": {
 		"target": "es6",
 		"module": "commonjs",
-		"outDir": "./dist",
+		"outDir": "dist",
 		"strict": true,
 		"esModuleInterop": true,
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,
 		"allowImportingTsExtensions": true,
 		"noEmit": true,
-		"baseUrl": "./",
+		"baseUrl": "src",
 		"paths": {
-			"lib/*": ["src/lib/*"]
+			"lib/*": ["./lib/*"]
 		},
 		"typeRoots": ["./types"]
 	},
-	"include": ["src/**/*.ts", "types/express/custom.d.ts"],
+	"include": ["src"],
 	"exclude": ["node_modules"]
 }
