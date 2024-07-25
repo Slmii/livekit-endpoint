@@ -13,6 +13,7 @@ tokenRoutes.get('/:roomName/:participantName', async (req, res, _next) => {
 	accessToken.addGrant({
 		room: req.params.roomName,
 		roomJoin: true,
+		roomCreate: true,
 		// roomAdmin: true,
 		canSubscribe: true,
 		canPublish: true,
