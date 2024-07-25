@@ -7,7 +7,7 @@ tokenRoutes.get('/:roomName/:participantName', async (req, res, _next) => {
 	const accessToken = new AccessToken(process.env.LIVEKIT_API_KEY, process.env.LIVEKIT_API_SECRET, {
 		identity: req.params.participantName,
 		name: req.params.participantName,
-		ttl: '30m'
+		ttl: '10m'
 	});
 
 	accessToken.addGrant({
